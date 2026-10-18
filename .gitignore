@@ -25,7 +25,7 @@ Thumbs.db
 !.vscode/extensions.json
 !.vscode/tasks.json
 *.code-workspace
-!address-autocomplete-for-formidable-forms.code-workspace
+!logical-address-autocomplete-for-formidable-forms.code-workspace
 
 # Grunt
 /node_modules/

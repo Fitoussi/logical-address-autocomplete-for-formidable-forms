@@ -1,4 +1,17 @@
-# Address Autocomplete for Formidable Forms
+# Logical Address Autocomplete for Formidable Forms
+
+## October 17 local dashboard containment refactor
+
+The owner requested the same copyable dashboard module as Gravity Geolocation,
+with no behavior changes. Presentation now lives in src/Admin/Dashboard/:
+Loader.php, Features.php, views/dashboard.php and assets/scss + assets/css.
+Host callers, fixtures, build/watch paths and package checks use the new locations.
+Native settings, setup guards, menus/URLs, feature content and saved data remain
+host-owned and unchanged. No SDK, dependency, source version or published ZIP
+changes. This is unreleased source work, not authorization to publish or install.
+See src/Admin/Dashboard/README.md and the workspace audit at
+artifacts/dashboard-modules-20261017/RESULTS.txt for validation boundaries.
+
 
 ## Standalone bootstrap convention
 
@@ -66,7 +79,9 @@ First-party JavaScript/SCSS formatting follows .prettierrc.json; vendor sources
 are excluded by .prettierignore. PHP follows tools/phpcs.xml.dist, matching the
 Gravity standalone conventions. Test-only host stubs are not shipped in ZIPs.
 Development quality tooling lives in tools/. Readable JS/SCSS and sourcemaps ship
-with the generated assets. npm run package creates a versioned, non-overwriting
+with the generated assets. Build scripts, package.json and package-lock.json stay
+in the public source repository and are excluded from installable ZIPs.
+npm run package creates a versioned, non-overwriting
 ZIP under dist/. Public metadata lives in readme.txt and change_log.txt.
 
 Global preferences preserve existing premium keys. Formidable merges only three
@@ -87,3 +102,26 @@ field options, native Address options, global preferences and the plugin overvie
 Screenshot provenance is recorded in docs/screenshots.txt. Do not relabel captures
 from other hosts.
 GitHub publication and WordPress.org submission require separate approval.
+
+## WordPress.org submission identity
+
+Public name: Logical Address Autocomplete for Formidable Forms.
+Internal FRMGEOAC_PLUGIN_NAME is Address Autocomplete for Formidable Forms,
+omitting only the Logical brand prefix so the host remains identifiable in the
+admin page/browser title and setup notice. Only the visual dashboard heading is
+Address Autocomplete, with For Formidable Forms above it. The official public
+name remains in the plugin header and readme; no separate display constant is needed.
+Requested slug and translation domain: logical-address-autocomplete-for-formidable-forms.
+The local folder, main PHP filename, workspace file and ZIP root use this slug.
+WordPress.org must still confirm/reserve it for the existing pending submission.
+The GitHub source repository is
+https://github.com/Fitoussi/logical-address-autocomplete-for-formidable-forms.
+Its name matches the requested WordPress.org slug. Repository publication and
+WordPress.org submission remain separately authorized actions. Saved frmgeo field types, options, hooks and the
+Formidable settings tab remain unchanged. Keep all four discovery-only disabled
+buttons and their native dialogs; the rename must not affect their behavior.
+
+The October 17 source rename preserves prior uncommitted work. The initial
+submission version stays 1.0.0; no already-approved Gravity/Ninja slug is changed.
+Historical acceptance notes and original screenshot captures retain their original
+identities. The screenshot-5 overview capture predates the new branding/dashboard.

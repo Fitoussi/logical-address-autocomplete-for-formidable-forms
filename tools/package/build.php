@@ -12,17 +12,24 @@ if ( 'cli' !== PHP_SAPI ) {
 }
 
 $root = dirname( __DIR__, 2 );
-$slug = 'address-autocomplete-for-formidable-forms';
+$slug = 'logical-address-autocomplete-for-formidable-forms';
+$entry_file = 'logical-address-autocomplete-for-formidable-forms.php';
 
 try {
 	if ( ! class_exists( 'ZipArchive' ) ) {
 		throw new RuntimeException( 'Packaging requires the PHP zip extension.' );
 	}
-	$main = file_get_contents( $root . '/' . $slug . '.php' );
+	$main = file_get_contents( $root . '/' . $entry_file );
+	if ( preg_match( '/^ \* Tested up to:/mi', $main ) ) {
+		throw new RuntimeException( 'Tested up to belongs only in readme.txt, not the PHP plugin header.' );
+	}
 	if ( ! preg_match( '/^ \* Version:\s*([0-9]+\.[0-9]+\.[0-9]+(?:[-.][A-Za-z0-9.-]+)?)\s*$/m', $main, $match ) ) {
 		throw new RuntimeException( 'Cannot read the plugin header version.' );
 	}
 	$version = $match[1];
+	if ( ! preg_match( '/^ \* Text Domain:\s*' . preg_quote( $slug, '/' ) . '\s*$/m', $main ) ) {
+		throw new RuntimeException( 'The text domain must match the WordPress.org release slug.' );
+	}
 	if ( false === strpos( $main, "define( 'FRMGEOAC_VERSION', '{$version}' );" ) || false === strpos( $main, "define( 'FRMGEOAC_PACKAGE_TYPE', 'free' );" ) ) {
 		throw new RuntimeException( 'Plugin constants do not match the standalone header.' );
 	}
@@ -31,22 +38,27 @@ try {
 		throw new RuntimeException( 'The readme stable tag must match the plugin version.' );
 	}
 
-	$required = array(
+	$required = [
+		'src/Admin/Dashboard/Loader.php',
+		'src/Admin/Dashboard/Features.php',
+		'src/Admin/Dashboard/views/dashboard.php',
+		'src/Admin/Dashboard/assets/scss/dashboard.scss',
+		'src/Admin/Dashboard/assets/css/dashboard.css',
 		'build/js/frontend/address-autocomplete.min.js',
 		'build/js/admin/frmgeo-form-editor.min.js',
 		'build/css/admin/frmgeo-admin.min.css',
-		'build/css/admin/frmgeo-product-dashboard.min.css',
+		'src/Admin/Dashboard/assets/css/dashboard.min.css',
 		'assets/css/address-autocomplete.css',
 		'assets/css/choices.css',
 		'assets/licenses/choices.txt',
-	);
+	];
 	foreach ( $required as $path ) {
 		if ( ! is_file( $root . '/' . $path ) ) {
 			throw new RuntimeException( 'Missing asset: ' . $path . '. Run npm run build first.' );
 		}
 	}
 
-	$paths      = array( $slug . '.php', 'readme.txt', 'change_log.txt', 'src', 'assets', 'build', 'languages', 'build.js', 'package.json', 'package-lock.json' );
+	$paths      = array( $entry_file, 'readme.txt', 'change_log.txt', 'src', 'assets', 'build', 'languages' );
 	$files      = array();
 	$extensions = array( 'php', 'js', 'css', 'scss', 'svg', 'png', 'jpg', 'jpeg', 'webp', 'gif', 'json', 'map', 'txt', 'po', 'mo', 'pot' );
 	foreach ( $paths as $path ) {

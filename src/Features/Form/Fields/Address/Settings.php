@@ -32,7 +32,7 @@ final class Settings {
 		return [
 			'frmgeo_enable_address_autocomplete'        => 1,
 			'frmgeo_force_suggested_address'            => 0,
-			'frmgeo_force_suggested_address_message'    => __( 'Please select an address from the suggested results.', 'address-autocomplete-for-formidable-forms' ),
+			'frmgeo_force_suggested_address_message'    => __( 'Please select an address from the suggested results.', 'logical-address-autocomplete-for-formidable-forms' ),
 			'frmgeo_address_autocomplete_types'         => [],
 			'frmgeo_address_autocomplete_country'       => [],
 			'frmgeo_address_autocomplete_language'      => '',
@@ -54,34 +54,34 @@ final class Settings {
 	 */
 	public static function get_settings() {
 		$labels  = [
-			'frmgeo_enable_address_autocomplete'        => __( 'Enable autocomplete', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_force_suggested_address'            => __( 'Require address selection from suggestions', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_force_suggested_address_message'    => __( 'Selection alert message', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_address_autocomplete_types'         => __( 'Autocomplete result types', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_address_autocomplete_country'       => __( 'Restrict to countries', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_address_autocomplete_language'      => __( 'Language', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_restriction_usage'     => __( 'Location bias', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_proximity_lat'         => __( 'Latitude', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_proximity_lng'         => __( 'Longitude', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_proximity_radius'      => __( 'Radius (meters, up to 50,000)', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_bounds_sw_point'       => __( 'Southwest point (latitude, longitude)', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_bounds_ne_point'       => __( 'Northeast point (latitude, longitude)', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_address_autocomplete_strict_bounds' => __( 'Restrict results to the bounds', 'address-autocomplete-for-formidable-forms' ),
+			'frmgeo_enable_address_autocomplete'        => __( 'Enable autocomplete', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_force_suggested_address'            => __( 'Require address selection from suggestions', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_force_suggested_address_message'    => __( 'Selection alert message', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_address_autocomplete_types'         => __( 'Autocomplete result types', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_address_autocomplete_country'       => __( 'Restrict to countries', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_address_autocomplete_language'      => __( 'Language', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_restriction_usage'     => __( 'Location bias', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_proximity_lat'         => __( 'Latitude', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_proximity_lng'         => __( 'Longitude', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_proximity_radius'      => __( 'Radius (meters, up to 50,000)', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_bounds_sw_point'       => __( 'Southwest point (latitude, longitude)', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_bounds_ne_point'       => __( 'Northeast point (latitude, longitude)', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_address_autocomplete_strict_bounds' => __( 'Restrict results to the bounds', 'logical-address-autocomplete-for-formidable-forms' ),
 		];
 		$tooltips = [
-			'frmgeo_enable_address_autocomplete'        => __( 'Show address suggestions powered by Google Places.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_force_suggested_address'            => __( 'If the visitor leaves a newly typed address without selecting a suggestion, clear the input and show your configured alert.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_force_suggested_address_message'    => __( 'Show this alert when the visitor leaves a newly typed address without selecting an autocomplete suggestion.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_address_autocomplete_types'         => __( 'Choose up to 5 types of places to include in autocomplete suggestions. Leave empty to include all place types.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_address_autocomplete_country'       => __( 'Select up to 5 countries to limit address suggestions to those countries. Leave empty to allow all countries.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_address_autocomplete_language'      => __( 'Choose a language for suggestions and place details. Leave the default selected to use the global language setting.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_restriction_usage'     => __( 'Favor suggestions near a configured point or within a rectangular area. This does not detect the visitor’s location. Area bounds only exclude outside results when the bounds restriction is enabled.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_proximity_lat'         => __( 'Latitude of the center point used to favor nearby suggestions.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_proximity_lng'         => __( 'Longitude of the center point used to favor nearby suggestions.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_proximity_radius'      => __( 'Radius around the center point, in meters (up to 50,000). This favors nearby suggestions but does not exclude results outside the radius.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_bounds_sw_point'       => __( 'Enter the southwest corner as latitude, longitude, for example: 26.423277, -82.1371324.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_autocomplete_bounds_ne_point'       => __( 'Enter the northeast corner as latitude, longitude, for example: 26.4724595, -82.0217760.', 'address-autocomplete-for-formidable-forms' ),
-			'frmgeo_address_autocomplete_strict_bounds' => __( 'Limit suggestions to the configured rectangular area instead of only favoring results within it. Applies when Location bias is set to Area bounds.', 'address-autocomplete-for-formidable-forms' ),
+			'frmgeo_enable_address_autocomplete'        => __( 'Show address suggestions powered by Google Places.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_force_suggested_address'            => __( 'If the visitor leaves a newly typed address without selecting a suggestion, clear the input and show your configured alert.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_force_suggested_address_message'    => __( 'Show this alert when the visitor leaves a newly typed address without selecting an autocomplete suggestion.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_address_autocomplete_types'         => __( 'Choose up to 5 types of places to include in autocomplete suggestions. Leave empty to include all place types.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_address_autocomplete_country'       => __( 'Select up to 5 countries to limit address suggestions to those countries. Leave empty to allow all countries.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_address_autocomplete_language'      => __( 'Choose a language for suggestions and place details. Leave the default selected to use the global language setting.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_restriction_usage'     => __( 'Favor suggestions near a configured point or within a rectangular area. This does not detect the visitor’s location. Area bounds only exclude outside results when the bounds restriction is enabled.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_proximity_lat'         => __( 'Latitude of the center point used to favor nearby suggestions.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_proximity_lng'         => __( 'Longitude of the center point used to favor nearby suggestions.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_proximity_radius'      => __( 'Radius around the center point, in meters (up to 50,000). This favors nearby suggestions but does not exclude results outside the radius.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_bounds_sw_point'       => __( 'Enter the southwest corner as latitude, longitude, for example: 26.423277, -82.1371324.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_autocomplete_bounds_ne_point'       => __( 'Enter the northeast corner as latitude, longitude, for example: 26.4724595, -82.0217760.', 'logical-address-autocomplete-for-formidable-forms' ),
+			'frmgeo_address_autocomplete_strict_bounds' => __( 'Limit suggestions to the configured rectangular area instead of only favoring results within it. Applies when Location bias is set to Area bounds.', 'logical-address-autocomplete-for-formidable-forms' ),
 		];
 		$selects = [
 			'frmgeo_address_autocomplete_language'  => ReferenceData::get_languages_as_options(),
@@ -89,15 +89,15 @@ final class Settings {
 			'frmgeo_address_autocomplete_country'   => ReferenceData::get_countries_as_options(),
 			'frmgeo_autocomplete_restriction_usage' => [
 				[
-					'label' => __( 'None', 'address-autocomplete-for-formidable-forms' ),
+					'label' => __( 'None', 'logical-address-autocomplete-for-formidable-forms' ),
 					'value' => '',
 				],
 				[
-					'label' => __( 'Proximity', 'address-autocomplete-for-formidable-forms' ),
+					'label' => __( 'Proximity', 'logical-address-autocomplete-for-formidable-forms' ),
 					'value' => 'proximity',
 				],
 				[
-					'label' => __( 'Area bounds', 'address-autocomplete-for-formidable-forms' ),
+					'label' => __( 'Area bounds', 'logical-address-autocomplete-for-formidable-forms' ),
 					'value' => 'area_bounds',
 				],
 			],
@@ -105,7 +105,7 @@ final class Settings {
 		$selects['frmgeo_address_autocomplete_language'] = array_merge(
 			[
 				[
-					'label' => __( 'Default (global language)', 'address-autocomplete-for-formidable-forms' ),
+					'label' => __( 'Default (global language)', 'logical-address-autocomplete-for-formidable-forms' ),
 					'value' => '',
 				],
 			],

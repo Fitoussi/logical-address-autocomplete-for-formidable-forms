@@ -82,7 +82,7 @@ class Field extends \FrmFieldText {
 				],
 				'https://www.google.com/maps/search/'
 			);
-			$display .= ' — <a href="' . esc_url( $url ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Open Map', 'address-autocomplete-for-formidable-forms' ) . '</a>';
+			$display .= ' — <a href="' . esc_url( $url ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Open Map', 'logical-address-autocomplete-for-formidable-forms' ) . '</a>';
 		}
 		return $display;
 	}

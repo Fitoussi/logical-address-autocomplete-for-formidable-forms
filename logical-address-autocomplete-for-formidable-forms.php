@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Address Autocomplete for Formidable Forms
+ * Plugin Name: Logical Address Autocomplete for Formidable Forms
  * Description: Add modern Google Places suggestions to Formidable Forms. Dedicated Address field, native Address autofill, country/type/language controls, location bias, required selection and admin entry map links. Requires Formidable Forms and your own Google API key.
  * Version: 1.0.0
  * Author: Eyal Fitoussi
@@ -8,7 +8,7 @@
  * Requires at least: 6.5
  * Requires PHP: 7.4
  * Requires Plugins: formidable
- * Text Domain: address-autocomplete-for-formidable-forms
+ * Text Domain: logical-address-autocomplete-for-formidable-forms
  * Domain Path: /languages/
  * License: GPL-3.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html

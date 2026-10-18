@@ -9,7 +9,7 @@
 namespace FormidableGeolocationAutocomplete\Features\Form\Admin;
 
 use FormidableGeolocationAutocomplete\Features\Form\Fields\Address\Settings;
-use FormidableGeolocationAutocomplete\Admin\Dashboard;
+use FormidableGeolocationAutocomplete\Admin\Dashboard\Loader as Dashboard;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -68,7 +68,7 @@ final class FormEditor {
 			return;
 		}
 		$id = (int) $field['id'];
-		echo '<h3 class="frm-collapsed">' . esc_html__( 'Address Autocomplete', 'address-autocomplete-for-formidable-forms' ) . '<i class="frm_icon_font frm_arrowdown6_icon"></i></h3>';
+		echo '<h3 class="frm-collapsed">' . esc_html__( 'Address Autocomplete', 'logical-address-autocomplete-for-formidable-forms' ) . '<i class="frm_icon_font frm_arrowdown6_icon"></i></h3>';
 		echo '<div class="frm_grid_container frm-collapse-me frmgeoac-options">';
 		foreach ( Settings::get_settings() as $key => $definition ) {
 			$value = $field[ $key ] ?? $definition['value'];
@@ -135,10 +135,10 @@ final class FormEditor {
 	 */
 	public function available_fields( $fields ) {
 		$definitions = [
-			'frmgeo_map'                => [ __( 'Map', 'address-autocomplete-for-formidable-forms' ), 'location' ],
-			'frmgeo_directions'         => [ __( 'Directions', 'address-autocomplete-for-formidable-forms' ), 'flag' ],
-			'frmgeo_distance'           => [ __( 'Distance & Duration', 'address-autocomplete-for-formidable-forms' ), 'clock' ],
-			'frmgeo_address_validation' => [ __( 'Address Validation', 'address-autocomplete-for-formidable-forms' ), 'saved' ],
+			'frmgeo_map'                => [ __( 'Map', 'logical-address-autocomplete-for-formidable-forms' ), 'location' ],
+			'frmgeo_directions'         => [ __( 'Directions', 'logical-address-autocomplete-for-formidable-forms' ), 'flag' ],
+			'frmgeo_distance'           => [ __( 'Distance & Duration', 'logical-address-autocomplete-for-formidable-forms' ), 'clock' ],
+			'frmgeo_address_validation' => [ __( 'Address Validation', 'logical-address-autocomplete-for-formidable-forms' ), 'saved' ],
 		];
 		foreach ( $definitions as $type => $definition ) {
 			$fields[ $type ] = [
@@ -146,7 +146,7 @@ final class FormEditor {
 				'icon'       => 'dashicons dashicons-' . $definition[1] . ' frm_show_upgrade',
 				'message'    => sprintf(
 					/* translators: %1$s: Feature name, %2$s: Opening link, %3$s: Closing link. */
-					esc_html__( '%1$s is available with Formidable Geolocation. %2$sExplore features%3$s to learn more.', 'address-autocomplete-for-formidable-forms' ),
+					esc_html__( '%1$s is available with Formidable Geolocation. %2$sExplore features%3$s to learn more.', 'logical-address-autocomplete-for-formidable-forms' ),
 					esc_html( $definition[0] ),
 					'<a href="' . esc_url( Dashboard::get_url() ) . '">',
 					'</a>'
@@ -166,7 +166,7 @@ final class FormEditor {
 	 * @return void
 	 */
 	public function field_group() {
-		echo '<div id="frmgeo-geolocation-fields-holder" style="display:none"><h3 class="frm-with-line"><span>' . esc_html__( 'Geolocation Fields', 'address-autocomplete-for-formidable-forms' ) . '</span></h3><ul class="field_type_list frm_grid_container frmgeo-fields-container"></ul></div>';
+		echo '<div id="frmgeo-geolocation-fields-holder" style="display:none"><h3 class="frm-with-line"><span>' . esc_html__( 'Geolocation Fields', 'logical-address-autocomplete-for-formidable-forms' ) . '</span></h3><ul class="field_type_list frm_grid_container frmgeo-fields-container"></ul></div>';
 	}
 
 	/**
@@ -188,9 +188,9 @@ final class FormEditor {
 			'frmgeoac-form-editor',
 			'frmgeoacEditor',
 			[
-				'allCountries' => __( 'All countries', 'address-autocomplete-for-formidable-forms' ),
-				'allTypes'     => __( 'All place types', 'address-autocomplete-for-formidable-forms' ),
-				'search'       => __( 'Search', 'address-autocomplete-for-formidable-forms' ),
+				'allCountries' => __( 'All countries', 'logical-address-autocomplete-for-formidable-forms' ),
+				'allTypes'     => __( 'All place types', 'logical-address-autocomplete-for-formidable-forms' ),
+				'search'       => __( 'Search', 'logical-address-autocomplete-for-formidable-forms' ),
 			]
 		);
 	}

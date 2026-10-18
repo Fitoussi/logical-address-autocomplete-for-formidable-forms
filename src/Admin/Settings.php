@@ -8,6 +8,8 @@
 
 namespace FormidableGeolocationAutocomplete\Admin;
 
+use FormidableGeolocationAutocomplete\Admin\Dashboard\Loader as Dashboard;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -42,7 +44,7 @@ final class Settings {
 		$sections['frmgeo_geolocation'] = [
 			'class'    => self::class,
 			'function' => 'render',
-			'name'     => __( 'Address Autocomplete', 'address-autocomplete-for-formidable-forms' ),
+			'name'     => __( 'Address Autocomplete', 'logical-address-autocomplete-for-formidable-forms' ),
 			'icon'     => 'frm_icon_font frm_location_icon',
 		];
 		return $sections;
@@ -116,17 +118,17 @@ final class Settings {
 		wp_nonce_field( 'frmgeoac_settings', 'frmgeoac_settings_nonce' );
 		Dashboard::render_settings_link();
 		$labels = [
-			'google_maps_browser_api_key' => __( 'Browser API Key', 'address-autocomplete-for-formidable-forms' ),
-			'google_maps_country'         => __( 'Region Code', 'address-autocomplete-for-formidable-forms' ),
-			'google_maps_language'        => __( 'Language', 'address-autocomplete-for-formidable-forms' ),
+			'google_maps_browser_api_key' => __( 'Browser API Key', 'logical-address-autocomplete-for-formidable-forms' ),
+			'google_maps_country'         => __( 'Region Code', 'logical-address-autocomplete-for-formidable-forms' ),
+			'google_maps_language'        => __( 'Language', 'logical-address-autocomplete-for-formidable-forms' ),
 		];
-		echo '<p>' . esc_html__( 'Use your own Google browser API key with Maps JavaScript API and Places API (New) enabled. Region influences results; field country restrictions limit suggestions.', 'address-autocomplete-for-formidable-forms' ) . '</p>';
+		echo '<p>' . esc_html__( 'Use your own Google browser API key with Maps JavaScript API and Places API (New) enabled. Region influences results; field country restrictions limit suggestions.', 'logical-address-autocomplete-for-formidable-forms' ) . '</p>';
 		foreach ( $labels as $key => $label ) {
 			$value = is_scalar( $settings[ $key ] ) ? (string) $settings[ $key ] : '';
 			echo '<p><label class="frm_left_label" for="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</label>';
 			echo '<input class="frm_with_left_label" type="text" id="' . esc_attr( $key ) . '" name="frmgeo_settings[' . esc_attr( $key ) . ']" value="' . esc_attr( $value ) . '"></p>';
 			if ( 'google_maps_browser_api_key' === $key ) {
-				echo '<p class="frm_with_left_label">' . esc_html__( 'For this free plugin, enable Maps JavaScript API and Places API (New) for your browser key. No server key is required.', 'address-autocomplete-for-formidable-forms' ) . ' ' . esc_html__( 'Need help?', 'address-autocomplete-for-formidable-forms' ) . ' <a href="' . esc_url( FRMGEOAC_SITE_URL . '/docs/google-maps-api-keys-formidable-geolocation/' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'View the Google API setup guide', 'address-autocomplete-for-formidable-forms' ) . '</a></p>';
+				echo '<p class="frm_with_left_label">' . esc_html__( 'For this free plugin, enable Maps JavaScript API and Places API (New) for your browser key. No server key is required.', 'logical-address-autocomplete-for-formidable-forms' ) . ' ' . esc_html__( 'Need help?', 'logical-address-autocomplete-for-formidable-forms' ) . ' <a href="' . esc_url( FRMGEOAC_SITE_URL . '/docs/google-maps-api-keys-formidable-geolocation/' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'View the Google API setup guide', 'logical-address-autocomplete-for-formidable-forms' ) . '</a></p>';
 			}
 		}
 	}

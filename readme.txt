@@ -1,63 +1,66 @@
-=== Address Autocomplete for Formidable Forms ===
-Contributors: eyalfitoussi
+=== Logical Address Autocomplete for Formidable Forms ===
+Contributors: ninjew
 Tags: address autocomplete, formidable forms, google places, address, geolocation
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.0.0
-License: GPLv3 or later
+License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Google Places address suggestions for Formidable Forms, with country and language controls, location bias and required selection.
 
 == Description ==
 
-Less typing. More useful address suggestions.
+Add Google-powered address suggestions to Formidable Forms with a dedicated single-line Address field or optional native Address autofill. Visitors start typing, choose a suggestion, and continue filling out the form with less typing.
 
-Address Autocomplete for Formidable Forms adds Google-powered address suggestions to your forms, with practical controls included free. Visitors start typing, choose a suggestion, and continue filling out the form.
+= Features =
 
-**An Address field built for Formidable Forms**
+* Dedicated single-line Address field in the native Formidable Forms builder.
+* Optional autofill for native Address fields in editions that provide them.
+* Country restrictions: up to five countries per field.
+* Result types: regions, cities, street addresses or premises.
+* Per-field suggestion language.
+* Global language and region preferences.
+* Location bias by point and radius or rectangular bounds.
+* Optional restriction to rectangular bounds.
+* Required suggestion selection with a custom alert message.
+* Open a saved single-line address in Google Maps from the admin entry-detail page.
 
-* Add a dedicated single-line Address field from the Geolocation field group.
-* Configure autocomplete in that field's own options, alongside the native builder's settings.
-* Autofill street address, city, state, postal code and country in a native Address field, if your Formidable edition supplies it.
-* Open a dedicated Address field's saved address in Google Maps from the admin entry-detail page.
+= Address fields for your forms =
 
-The dedicated field works with the free Formidable Forms plugin. Native Address autocomplete is opt-in and requires a host version/edition providing that native field.
+Add the dedicated Address field from the Geolocation field group and configure autocomplete in its field settings. This single-line field works with the free Formidable Forms plugin.
 
-**Useful controls, included free**
+If your Formidable edition supplies a native multipart Address field, enable autocomplete in its options to fill street address, city, state, postal code and country. Google may not return every component for every suggestion.
 
-* **Countries:** limit suggestions to the countries relevant to your form.
-* **Result types:** request regions, cities, street addresses or premises.
-* **Language:** choose a language per field or use the global preference.
-* **Region:** set a site-wide region preference. Region influences results; country restrictions limit them.
-* **Location bias:** favor suggestions near coordinates or within geographic bounds, with optional strict bounds.
-* **Required suggestion selection:** clear unselected typed text when the visitor leaves the field and display your configurable alert.
+= Customize suggestions =
 
-Required selection is a browser-side form behavior, not postal validation, proof of a deliverable address or a server-side security check. Google controls the available suggestions.
+Choose countries, result types and language for each field. Prioritize suggestions near a point or within map bounds, or restrict results to those bounds. The global region preference influences results; country restrictions limit which countries can appear.
 
-**Modern Google Places by default**
+= Require a suggestion selection =
 
-The default autocomplete path uses Google Places API (New), rather than the deprecated legacy AutocompleteService. A legacy compatibility fallback remains for compatible environments where the modern API is unavailable. The default modern path avoids that legacy service's deprecation warning; it does not guarantee every Google configuration is warning-free.
+Optionally require visitors to choose an address suggestion. Manually typed, unselected text is cleared, and your custom alert prompts them to select a suggestion. This is not postal address validation or a deliverability guarantee.
 
-**Focused and standalone**
+= Google API requirements =
 
-No WPGeo account, licensing SDK or WPGeo Framework is required. The dashboard, feature overview and package comparison are bundled locally. Your Google browser API key is still required, and Google's billing and usage limits apply separately.
+A Google Maps API key is required for address autocomplete to work. Follow [this tutorial](https://formidablegeolocation.com/docs/google-maps-api-keys-formidable-geolocation/) to create your Google Maps API key.
 
-Existing Address field types and supported settings retain the same saved identities as Formidable Geolocation. The free integration yields when the matching premium plugin is active. Premium is a separate plugin installation, not functionality unlocked inside this ZIP.
+[Google Maps Platform terms](https://cloud.google.com/maps-platform/terms/) | [Google privacy policy](https://policies.google.com/privacy)
 
-**Need more than address autocomplete?**
+= Need more than autocomplete? =
 
-Explore [Formidable Geolocation](https://formidablegeolocation.com/) for connected maps, geocoding, dynamic location fields, current-location detection, directions, distance, address validation, nearby locations and drawing tools.
+[Formidable Geolocation](https://formidablegeolocation.com/) offers paid packages for interactive maps, geocoding, dynamic location fields, current-location detection, directions, distance calculations, address validation, nearby locations and drawing tools. Feature availability depends on the package.
 
-Features depend on the premium package. Use the included Compare Packages page to compare the options. Editor links for Map, Directions, Distance & Duration and Address Validation are informational only; premium functionality is not bundled in this free plugin.
+Formidable Geolocation is a separate plugin, not functionality unlocked inside this free plugin by entering a license.
+
+[Explore packages and pricing](https://formidablegeolocation.com/pricing/) | [Try the live demos](https://demo.formidablegeolocation.com/) | [Read the documentation](https://formidablegeolocation.com/docs/)
 
 == Installation ==
 
 1. Install and activate Formidable Forms 6.23 or newer.
-2. Install and activate Address Autocomplete for Formidable Forms.
+2. Install and activate Logical Address Autocomplete for Formidable Forms. Deactivate Formidable Geolocation first if you are switching to this free plugin.
 3. Open Formidable Forms' settings and select Address Autocomplete.
-4. Enter your own Google browser API key. Enable Maps JavaScript API and Places API (New), configure billing, and restrict the key to your website.
+4. Enter your Google Maps API key with Maps JavaScript API and Places API (New) enabled.
 5. Set optional global region and language preferences.
 6. Add the Address field from Geolocation, or enable autocomplete on a native Address field if your Formidable edition supplies it. Configure its options and save.
 7. Preview and test selecting suggestions and submitting the form.
@@ -65,42 +68,46 @@ Features depend on the premium package. Use the included Compare Packages page t
 == Frequently Asked Questions ==
 
 = Are all the autocomplete controls included free? =
-Yes. The controls described above are included in this free plugin. Formidable Forms is required separately. Google usage and any paid host edition have separate terms and pricing.
+
+Yes. All autocomplete controls described above are included free. Formidable Forms and your own Google Maps API key are required. Native Address autofill needs a Formidable edition that provides that field.
 
 = Does this validate postal addresses or provide maps and directions? =
+
 No. Autocomplete helps visitors choose a Google suggestion, but does not verify postal deliverability or provide connected maps, directions or current-location detection. Those workflows belong to separate premium packages.
 
 = Can I use Formidable's native Address field? =
+
 Yes, if your host version/edition supplies it. Enable autocomplete in its options to fill its address components. The dedicated single-line Address field does not require that native field.
 
 = What happens if someone types an address without selecting a suggestion? =
+
 With required suggestion selection enabled, the plugin clears that unselected typed text on leaving the field and displays your configured message. The visitor can retry and select a suggestion. Without that option, manually typed addresses are permitted. Host-required-field validation remains separate.
 
 = What is the difference between region and country restriction? =
+
 The global region preference influences Google's results. A field's country restriction limits suggestions to the selected countries. Field language can override the global language.
 
 = Can I use it on AJAX or multi-page forms? =
+
 The adapter handles supported host form rendering and dynamic updates. Multi-page and conditional workflows depend on the corresponding Formidable Forms features/add-ons. Test your own form, theme and integrations before going live.
 
 = Can free and premium be active together? =
+
 Free stops registering its overlapping fields and hooks while the matching premium geolocation plugin is active. Deactivate free when using premium. Saved fields and settings are not deleted. This is not a conversion tool for premium-only fields left in a form after premium is removed.
 
-= Is a WPGeo account required? =
-No. The plugin does not include account connection, license activation, telemetry, a remote product catalog or plugin installation services.
+= Is a plugin account or license required? =
+
+No plugin account or license is required. You do need your own Google Cloud account and API key, as described above.
 
 = Can another integration load Google? =
+
 Developers can use the frmgeo_disable_google_maps_api filter to prevent this plugin from loading the API. Another integration must then supply a compatible Google Maps JavaScript API with Places. No Google API Loading switch is shown in the free settings interface.
 
-== External Services ==
+= Where can developers find the source code? =
 
-Google Maps Platform supplies address suggestions and selected-place address details. A form with enabled autocomplete connects the visitor's browser to Google using your configured browser API key. The API loader sends the key and configured language/region. Suggestion and place-detail requests send the typed query or selected place identifier and configured countries, result types, language and geographic bias/restriction where applicable.
+Readable JavaScript and SCSS sources are included in the plugin. The full development project, build configuration and dependency lockfile are available on [GitHub](https://github.com/Fitoussi/logical-address-autocomplete-for-formidable-forms). To rebuild assets, download the repository, install Node.js/npm, then run `npm ci` and `npm run build` (esbuild and Sass). These tools are not required to use the plugin.
 
-Configure Google's APIs, billing and website key restrictions before use. Site owners are responsible for privacy notices or consent needed for their audience and deployment.
-
-[Google Maps Platform Terms](https://cloud.google.com/maps-platform/terms/)
-[Google Privacy Policy](https://policies.google.com/privacy)
-
-Product, demo, documentation and pricing links open our websites only when clicked. Dashboard descriptions are bundled locally; these pages do not download remote catalogs or install plugins. Clicking an entry's Open Map link opens Google Maps with the stored address as the search query.
+Includes [Choices.js 11.1.0](https://github.com/Choices-js/Choices/tree/v11.1.0), MIT licensed; readable distribution: assets/js/editor/vendor/choices.js; license: assets/licenses/choices.txt.
 
 == Screenshots ==
 
@@ -113,8 +120,5 @@ Product, demo, documentation and pricing links open our websites only when click
 == Changelog ==
 
 = 1.0.0 =
-* Added a one-time administrator setup notice with permanent dismissal and no activation redirect.
-* Initial standalone address autocomplete integration for Formidable Forms.
-* Google Places API (New) by default, country/type/language controls, location bias and optional required suggestion selection.
-* Dedicated single-line Address field, opt-in native Address autofill and admin entry-detail map links.
-* Locally bundled overview, package comparison, help and product discovery pages.
+
+* Initial release.

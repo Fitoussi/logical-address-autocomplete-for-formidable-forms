@@ -76,7 +76,7 @@ function expect( $truth, $message ) {
 	if ( ! $truth ) {
 		throw new RuntimeException( $message ); }
 }
-require dirname( __DIR__ ) . '/address-autocomplete-for-formidable-forms.php';
+require dirname( __DIR__ ) . '/logical-address-autocomplete-for-formidable-forms.php';
 expect( FRMGEOAC_PACKAGE_TYPE === 'free', 'Package identity' );
 expect( ! defined( 'FRMGEO_VERSION' ), 'Free must not define premium bootstrap constants' );
 FormidableGeolocationAutocomplete\Loader::load();
@@ -104,7 +104,7 @@ foreach ( $schema as $definition ) {
 expect( strpos( $schema['frmgeo_force_suggested_address']['tooltip'], 'clear the input' ) !== false, 'Selection help describes blur clearing, not only submission' );
 expect( strpos( $schema['frmgeo_address_autocomplete_language']['tooltip'], 'global language setting' ) !== false, 'Language help describes the actual default' );
 expect( strpos( $schema['frmgeo_autocomplete_restriction_usage']['tooltip'], 'does not detect' ) !== false, 'Bias help does not promise visitor detection' );
-$products = FormidableGeolocationAutocomplete\Admin\Dashboard::get_products();
+$products = FormidableGeolocationAutocomplete\Admin\Dashboard\Loader::get_products();
 $product_urls = array_column( $products, 'url' );
 expect( count( $product_urls ) === count( array_unique( $product_urls ) ), 'Discovery cards do not duplicate products' );
 expect( in_array( 'https://gravitygeolocation.com/', $product_urls, true ), 'Gravity product is included in discovery cards' );
@@ -136,7 +136,7 @@ foreach ( array( 0, 1 ) as $enabled ) {
 	}
 	expect( (int) $serialized[0] === $enabled, 'Compact first-value-wins parser must persist checked and unchecked toggles' );
 }
-$features = FormidableGeolocationAutocomplete\Admin\DashboardFeatures::get_features();
+$features = FormidableGeolocationAutocomplete\Admin\Dashboard\Features::get_features();
 ob_start();
 $editor->options( array( 'id' => 104, 'type' => 'address' ) );
 $native_html = ob_get_clean();
@@ -156,7 +156,7 @@ expect(
 	) === 1,
 	'Only autocomplete included'
 );
-expect( array_keys( FormidableGeolocationAutocomplete\Admin\DashboardFeatures::get_packages() ) === array( 'free', 'starter', 'pro', 'agency' ), 'Host package lineup' );
+expect( array_keys( FormidableGeolocationAutocomplete\Admin\Dashboard\Features::get_packages() ) === array( 'free', 'starter', 'pro', 'agency' ), 'Host package lineup' );
 $processor = new FormidableGeolocationAutocomplete\Features\Form\Runtime\FormGeoProcessor();
 $input     = array(
 	array(

@@ -32,7 +32,7 @@ final class Loader {
 			add_action( 'network_admin_notices', [ self::class, 'conflict_notice' ] );
 			return;
 		}
-		Admin\Dashboard::register();
+		Admin\Dashboard\Loader::register();
 		if ( ! class_exists( '\\FrmAppHelper' ) || version_compare( \FrmAppHelper::plugin_version(), FRMGEOAC_MIN_HOST_VERSION, '<' ) ) {
 			add_action( 'admin_notices', [ self::class, 'dependency_notice' ] );
 			return;
@@ -48,7 +48,7 @@ final class Loader {
 	 */
 	public static function conflict_notice() {
 		if ( current_user_can( 'activate_plugins' ) ) {
-			echo '<div class="notice notice-warning"><p>' . esc_html__( 'Address Autocomplete for Formidable Forms is not running because Formidable Geolocation is active. Deactivate the free plugin; your existing Address fields and settings remain available in premium.', 'address-autocomplete-for-formidable-forms' ) . '</p></div>';
+			echo '<div class="notice notice-warning"><p>' . esc_html__( 'Address Autocomplete for Formidable Forms is not running because Formidable Geolocation is active. Deactivate the free plugin; your existing Address fields and settings remain available in premium.', 'logical-address-autocomplete-for-formidable-forms' ) . '</p></div>';
 		}
 	}
 
@@ -60,7 +60,7 @@ final class Loader {
 	 */
 	public static function dependency_notice() {
 		if ( current_user_can( 'activate_plugins' ) ) {
-			echo '<div class="notice notice-warning"><p>' . esc_html__( 'Address Autocomplete requires Formidable Forms 6.23 or newer.', 'address-autocomplete-for-formidable-forms' ) . '</p></div>';
+			echo '<div class="notice notice-warning"><p>' . esc_html__( 'Address Autocomplete requires Formidable Forms 6.23 or newer.', 'logical-address-autocomplete-for-formidable-forms' ) . '</p></div>';
 		}
 	}
 }

@@ -6,7 +6,7 @@
 			"type": "shell",
 			"command": "npm run build",
 			"options": {
-				"cwd": "${workspaceFolder:address-autocomplete-for-formidable-forms}"
+				"cwd": "${workspaceFolder:logical-address-autocomplete-for-formidable-forms}"
 			},
 			"problemMatcher": [],
 			"group": {

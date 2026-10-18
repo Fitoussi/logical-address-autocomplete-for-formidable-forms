@@ -492,17 +492,17 @@ final class ReferenceData {
 	public static function get_place_types_as_options() {
 		return self::as_options(
 			[
-				'(regions)'      => __( 'Regions', 'address-autocomplete-for-formidable-forms' ),
-				'(cities)'       => __( 'Cities', 'address-autocomplete-for-formidable-forms' ),
-				'street_address' => __( 'Street addresses', 'address-autocomplete-for-formidable-forms' ),
-				'premise'        => __( 'Premises', 'address-autocomplete-for-formidable-forms' ),
-				'postal_code'    => __( 'Postal codes', 'address-autocomplete-for-formidable-forms' ),
-				'restaurant'     => __( 'Restaurants', 'address-autocomplete-for-formidable-forms' ),
-				'lodging'        => __( 'Lodging', 'address-autocomplete-for-formidable-forms' ),
-				'store'          => __( 'Stores', 'address-autocomplete-for-formidable-forms' ),
-				'school'         => __( 'Schools', 'address-autocomplete-for-formidable-forms' ),
-				'hospital'       => __( 'Hospitals', 'address-autocomplete-for-formidable-forms' ),
-				'airport'        => __( 'Airports', 'address-autocomplete-for-formidable-forms' ),
+				'(regions)'      => __( 'Regions', 'logical-address-autocomplete-for-formidable-forms' ),
+				'(cities)'       => __( 'Cities', 'logical-address-autocomplete-for-formidable-forms' ),
+				'street_address' => __( 'Street addresses', 'logical-address-autocomplete-for-formidable-forms' ),
+				'premise'        => __( 'Premises', 'logical-address-autocomplete-for-formidable-forms' ),
+				'postal_code'    => __( 'Postal codes', 'logical-address-autocomplete-for-formidable-forms' ),
+				'restaurant'     => __( 'Restaurants', 'logical-address-autocomplete-for-formidable-forms' ),
+				'lodging'        => __( 'Lodging', 'logical-address-autocomplete-for-formidable-forms' ),
+				'store'          => __( 'Stores', 'logical-address-autocomplete-for-formidable-forms' ),
+				'school'         => __( 'Schools', 'logical-address-autocomplete-for-formidable-forms' ),
+				'hospital'       => __( 'Hospitals', 'logical-address-autocomplete-for-formidable-forms' ),
+				'airport'        => __( 'Airports', 'logical-address-autocomplete-for-formidable-forms' ),
 			]
 		);
 	}

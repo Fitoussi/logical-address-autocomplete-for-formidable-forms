@@ -8,7 +8,7 @@
 
     <arg name="extensions" value="php"/>
     <file>../src</file>
-    <file>../address-autocomplete-for-formidable-forms.php</file>
+    <file>../logical-address-autocomplete-for-formidable-forms.php</file>
 
     <exclude-pattern>/vendor/*</exclude-pattern>
     <exclude-pattern>/node_modules/*</exclude-pattern>

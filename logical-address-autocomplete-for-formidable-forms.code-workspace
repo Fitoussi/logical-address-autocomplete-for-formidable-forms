@@ -1,7 +1,7 @@
 {
 	"folders": [
 		{
-			"name": "address-autocomplete-for-formidable-forms",
+			"name": "logical-address-autocomplete-for-formidable-forms",
 			"path": "."
 		},
 		{
@@ -45,10 +45,16 @@
 			"showElapsed": true,
 			"commands": [
 				{
-					"match": ".*/address-autocomplete-for-formidable-forms/assets/(js/.*\\.js|scss/.*\\.scss)$",
+					"match": ".*/logical-address-autocomplete-for-formidable-forms/assets/(js/.*\\.js|scss/.*\\.scss)$",
 					"cmd": "npm run build",
 					"isAsync": false,
 					"autoShowOutputPanel": "error"
+				},
+				{
+				  "match": ".*/logical-address-autocomplete-for-formidable-forms/src/Admin/Dashboard/assets/scss/.*\\.scss$",
+				  "cmd": "cd \"${workspaceFolder}\" && npm run css:dashboard",
+				  "isAsync": false,
+				  "autoShowOutputPanel": "always"
 				}
 			]
 		}

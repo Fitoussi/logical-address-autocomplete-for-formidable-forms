@@ -8,6 +8,8 @@
 
 namespace FormidableGeolocationAutocomplete\Admin;
 
+use FormidableGeolocationAutocomplete\Admin\Dashboard\Loader as Dashboard;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -89,20 +91,20 @@ final class SetupNotice {
 					echo esc_html(
 						sprintf(
 							/* translators: %s: Plugin name. */
-							__( '%s is ready to configure.', 'address-autocomplete-for-formidable-forms' ),
+							__( '%s is ready to configure.', 'logical-address-autocomplete-for-formidable-forms' ),
 							FRMGEOAC_PLUGIN_NAME
 						)
 					);
 				?></strong><br>
-				<?php esc_html_e( 'Add your Google API key, then enable autocomplete in your form\'s field options.', 'address-autocomplete-for-formidable-forms' ); ?>
+				<?php esc_html_e( 'Add your Google API key, then enable autocomplete in your form\'s field options.', 'logical-address-autocomplete-for-formidable-forms' ); ?>
 			</p>
 			<div style="margin-bottom: 12px;">
-				<a class="button button-primary" href="<?php echo esc_url( admin_url( 'admin.php?page=formidable-settings&t=frmgeo_geolocation_settings' ) ); ?>"><?php esc_html_e( 'Set up autocomplete', 'address-autocomplete-for-formidable-forms' ); ?></a>
-				<a class="button button-secondary" href="<?php echo esc_url( Dashboard::get_url() ); ?>"><?php esc_html_e( 'View plugin overview', 'address-autocomplete-for-formidable-forms' ); ?></a>
+				<a class="button button-primary" href="<?php echo esc_url( admin_url( 'admin.php?page=formidable-settings&t=frmgeo_geolocation_settings' ) ); ?>"><?php esc_html_e( 'Set up autocomplete', 'logical-address-autocomplete-for-formidable-forms' ); ?></a>
+				<a class="button button-secondary" href="<?php echo esc_url( Dashboard::get_url() ); ?>"><?php esc_html_e( 'View plugin overview', 'logical-address-autocomplete-for-formidable-forms' ); ?></a>
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" style="display: inline-block; margin-left: 12px;">
 					<input type="hidden" name="action" value="<?php echo esc_attr( self::DISMISS_ACTION ); ?>">
 					<?php wp_nonce_field( self::DISMISS_ACTION ); ?>
-					<button class="button-link" type="submit"><?php esc_html_e( 'Dismiss', 'address-autocomplete-for-formidable-forms' ); ?></button>
+					<button class="button-link" type="submit"><?php esc_html_e( 'Dismiss', 'logical-address-autocomplete-for-formidable-forms' ); ?></button>
 				</form>
 			</div>
 		</div>
@@ -129,7 +131,7 @@ final class SetupNotice {
 	 */
 	public static function dismiss() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to dismiss this notice.', 'address-autocomplete-for-formidable-forms' ), '', [ 'response' => 403 ] );
+			wp_die( esc_html__( 'You do not have permission to dismiss this notice.', 'logical-address-autocomplete-for-formidable-forms' ), '', [ 'response' => 403 ] );
 		}
 		check_admin_referer( self::DISMISS_ACTION );
 		update_option( self::OPTION, 'dismissed', false );

@@ -55,7 +55,7 @@ final class Bootstrap {
 	 */
 	public function field_button( $fields ) {
 		$fields['frmgeo_address'] = [
-			'name' => __( 'Address', 'address-autocomplete-for-formidable-forms' ),
+			'name' => __( 'Address', 'logical-address-autocomplete-for-formidable-forms' ),
 			'icon' => 'frmfont frm_location_icon',
 		];
 		return $fields;

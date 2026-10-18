@@ -4,11 +4,14 @@
  * This presentation-only page never reads licenses, creates forms or writes
  * settings. Actual configuration remains on the native Formidable Forms screen.
  *
- * @package FormidableGeolocationAutocomplete\Admin
+ * @package FormidableGeolocationAutocomplete\Admin\Dashboard
+ *
  * @since 1.0.0
  */
 
-namespace FormidableGeolocationAutocomplete\Admin;
+namespace FormidableGeolocationAutocomplete\Admin\Dashboard;
+
+use FormidableGeolocationAutocomplete\Admin\SetupNotice;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,12 +22,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-final class Dashboard {
+final class Loader {
 
 	/**
 	 * Stable product-page identity independent of the installed folder name.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @var string
 	 */
 	private const PAGE_SLUG = 'frmgeoac-dashboard';
@@ -33,6 +37,7 @@ final class Dashboard {
 	 * Native WordPress page hook returned during menu registration.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @var string|false
 	 */
 	private static $page_hook = '';
@@ -41,6 +46,7 @@ final class Dashboard {
 	 * Register the local product page before Formidable Forms initializes.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @return void
 	 */
 	public static function register() {
@@ -55,10 +61,11 @@ final class Dashboard {
 	 * The Settings fallback keeps setup/help available while the host is inactive.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @return void
 	 */
 	public static function register_page() {
-		$title = __( 'Address Autocomplete', 'address-autocomplete-for-formidable-forms' );
+		$title = __( 'Address Autocomplete', 'logical-address-autocomplete-for-formidable-forms' );
 		if ( class_exists( '\FrmAppHelper' ) ) {
 			self::$page_hook = add_submenu_page( 'formidable', FRMGEOAC_PLUGIN_NAME, $title, 'manage_options', self::PAGE_SLUG, [ self::class, 'render' ] );
 		} else {
@@ -70,14 +77,15 @@ final class Dashboard {
 	 * Add the standalone plugin's overview, settings and documentation links.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @param array $links Existing WordPress plugin action links.
 	 * @return array
 	 */
 	public static function add_action_link( $links ) {
 		return [
-			'overview' => '<a href="' . esc_url( self::get_url() ) . '">' . esc_html__( 'Overview', 'address-autocomplete-for-formidable-forms' ) . '</a>',
-			'settings' => '<a href="' . esc_url( admin_url( 'admin.php?page=formidable-settings&t=frmgeo_geolocation_settings' ) ) . '">' . esc_html__( 'Settings', 'address-autocomplete-for-formidable-forms' ) . '</a>',
-			'docs'     => '<a href="' . esc_url( FRMGEOAC_SITE_URL . '/docs/' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Docs', 'address-autocomplete-for-formidable-forms' ) . '</a>',
+			'overview' => '<a href="' . esc_url( self::get_url() ) . '">' . esc_html__( 'Overview', 'logical-address-autocomplete-for-formidable-forms' ) . '</a>',
+			'settings' => '<a href="' . esc_url( admin_url( 'admin.php?page=formidable-settings&t=frmgeo_geolocation_settings' ) ) . '">' . esc_html__( 'Settings', 'logical-address-autocomplete-for-formidable-forms' ) . '</a>',
+			'docs'     => '<a href="' . esc_url( FRMGEOAC_SITE_URL . '/docs/' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Docs', 'logical-address-autocomplete-for-formidable-forms' ) . '</a>',
 		] + $links;
 	}
 
@@ -85,6 +93,7 @@ final class Dashboard {
 	 * Build a local navigation link using a whitelisted, non-mutating section.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @param string $section Requested section.
 	 * @return string
 	 */
@@ -98,6 +107,7 @@ final class Dashboard {
 	 * Native settings need only our card styles, not framework dashboard assets.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @param string $hook_suffix WordPress screen hook.
 	 * @return void
 	 */
@@ -115,7 +125,7 @@ final class Dashboard {
 
 		wp_enqueue_style(
 			'frmgeo-product-dashboard',
-			FRMGEOAC_URL . 'build/css/admin/frmgeo-product-dashboard.min.css',
+			FRMGEOAC_URL . 'src/Admin/Dashboard/assets/css/dashboard.min.css',
 			[],
 			FRMGEOAC_VERSION
 		);
@@ -126,20 +136,21 @@ final class Dashboard {
 	 * Link to the internal feature overview first and external pricing second.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @return void
 	 */
 	public static function render_settings_link() {
 		?>
 		<div class="frmgeo-product-settings__content frmgeoac-settings-notice">
-			<h3><?php esc_html_e( 'Need more than address autocomplete?', 'address-autocomplete-for-formidable-forms' ); ?></h3>
+			<h3><?php esc_html_e( 'Need more than address autocomplete?', 'logical-address-autocomplete-for-formidable-forms' ); ?></h3>
 			<p>
-				<?php esc_html_e( 'Explore maps, current-location detection, dynamic fields, directions, nearby locations, and more with Formidable Geolocation.', 'address-autocomplete-for-formidable-forms' ); ?>
+				<?php esc_html_e( 'Explore maps, current-location detection, dynamic fields, directions, nearby locations, and more with Formidable Geolocation.', 'logical-address-autocomplete-for-formidable-forms' ); ?>
 			</p>
 			<div class="frmgeo-product-settings__actions">
 				<a class="button button-primary" href="<?php echo esc_url( self::get_url() ); ?>">
-					<?php esc_html_e( 'Explore features', 'address-autocomplete-for-formidable-forms' ); ?>
+					<?php esc_html_e( 'Explore features', 'logical-address-autocomplete-for-formidable-forms' ); ?>
 				</a>
-				<a class="button button-secondary" href="<?php echo esc_url( FRMGEOAC_SITE_URL . '/pricing/' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'View packages', 'address-autocomplete-for-formidable-forms' ); ?></a>
+				<a class="button button-secondary" href="<?php echo esc_url( FRMGEOAC_SITE_URL . '/pricing/' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'View packages', 'logical-address-autocomplete-for-formidable-forms' ); ?></a>
 			</div>
 		</div>
 		<?php
@@ -151,6 +162,7 @@ final class Dashboard {
 	 * callback invocation. The template receives public metadata/URLs only.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @return void
 	 */
 	public static function render() {
@@ -162,10 +174,10 @@ final class Dashboard {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$requested = isset( $_GET['section'] ) && \is_string( $_GET['section'] ) ? sanitize_key( wp_unslash( $_GET['section'] ) ) : '';
 		$tabs      = [
-			'overview'   => __( 'Overview', 'address-autocomplete-for-formidable-forms' ),
-			'comparison' => __( 'Compare Packages', 'address-autocomplete-for-formidable-forms' ),
-			'help'       => __( 'Help', 'address-autocomplete-for-formidable-forms' ),
-			'products'   => __( 'More Plugins', 'address-autocomplete-for-formidable-forms' ),
+			'overview'   => __( 'Overview', 'logical-address-autocomplete-for-formidable-forms' ),
+			'comparison' => __( 'Compare Packages', 'logical-address-autocomplete-for-formidable-forms' ),
+			'help'       => __( 'Help', 'logical-address-autocomplete-for-formidable-forms' ),
+			'products'   => __( 'More Plugins', 'logical-address-autocomplete-for-formidable-forms' ),
 		];
 
 		$version      = FRMGEOAC_VERSION;
@@ -174,10 +186,10 @@ final class Dashboard {
 		$pricing_url  = FRMGEOAC_SITE_URL . '/pricing/';
 		$docs_url     = FRMGEOAC_SITE_URL . '/docs/';
 		$demo_url     = 'https://demo.formidablegeolocation.com/';
-		$product_name = FRMGEOAC_PLUGIN_NAME;
+		$product_name = __( 'Address Autocomplete', 'logical-address-autocomplete-for-formidable-forms' );
 		$package_name = FRMGEOAC_PACKAGE_LABEL;
-		$features     = DashboardFeatures::get_features();
-		$overview_features = DashboardFeatures::order_for_overview( $features );
+		$features     = Features::get_features();
+		$overview_features = Features::order_for_overview( $features );
 		$included     = array_filter(
 			$overview_features,
 			static function ( $feature ) {
@@ -190,10 +202,10 @@ final class Dashboard {
 				return ! $feature['included'];
 			}
 		);
-		$packages     = DashboardFeatures::get_packages();
+		$packages     = Features::get_packages();
 
-		$hero_title     = __( 'Less typing. Better addresses.', 'address-autocomplete-for-formidable-forms' );
-		$help_step      = __( 'Add the Address field from the Geolocation group, or enable autocomplete on a native Address field if your Formidable edition provides it.', 'address-autocomplete-for-formidable-forms' );
+		$hero_title     = __( 'Less typing. Better addresses.', 'logical-address-autocomplete-for-formidable-forms' );
+		$help_step      = __( 'Add the Address field from the Geolocation group, or enable autocomplete on a native Address field if your Formidable edition provides it.', 'logical-address-autocomplete-for-formidable-forms' );
 		$feature_groups = [
 			'included'  => $included,
 			'available' => $available,
@@ -206,6 +218,7 @@ final class Dashboard {
 	 * Return bundled product descriptions without remote content or installers.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @return array[] Public product names, descriptions and website URLs.
 	 */
 	public static function get_products() {
@@ -213,37 +226,37 @@ final class Dashboard {
 			[
 				'name'        => 'Formidable Geolocation',
 				'url'         => 'https://formidablegeolocation.com/',
-				'description' => __( 'Maps, geocoding, dynamic fields, directions, nearby locations and more for Formidable Forms.', 'address-autocomplete-for-formidable-forms' ),
+				'description' => __( 'Maps, geocoding, dynamic fields, directions, nearby locations and more for Formidable Forms.', 'logical-address-autocomplete-for-formidable-forms' ),
 			],
 			[
 				'name'        => 'GEO my WP',
 				'url'         => 'https://geomywp.com/',
-				'description' => __( 'Build location-based searches and directories for your WordPress site.', 'address-autocomplete-for-formidable-forms' ),
+				'description' => __( 'Build location-based searches and directories for your WordPress site.', 'logical-address-autocomplete-for-formidable-forms' ),
 			],
 			[
 				'name'        => 'Gravity Geolocation',
 				'url'         => 'https://gravitygeolocation.com/',
-				'description' => __( 'Maps, geocoding, dynamic fields, directions, nearby locations and more for Gravity Forms.', 'address-autocomplete-for-formidable-forms' ),
+				'description' => __( 'Maps, geocoding, dynamic fields, directions, nearby locations and more for Gravity Forms.', 'logical-address-autocomplete-for-formidable-forms' ),
 			],
 			[
 				'name'        => 'Gravity Search',
 				'url'         => 'https://gravitygeolocation.com/solutions/gravity-search/',
-				'description' => __( 'Turn Gravity Forms entries into searchable directories, listings and customer portals—with field filters, proximity search, maps and flexible result layouts.', 'address-autocomplete-for-formidable-forms' ),
+				'description' => __( 'Turn Gravity Forms entries into searchable directories, listings and customer portals—with field filters, proximity search, maps and flexible result layouts.', 'logical-address-autocomplete-for-formidable-forms' ),
 			],
 			[
 				'name'        => 'Geolocation for Ninja Forms',
 				'url'         => 'https://ninjageolocation.com/',
-				'description' => __( 'Bring address, map and location workflows to Ninja Forms.', 'address-autocomplete-for-formidable-forms' ),
+				'description' => __( 'Bring address, map and location workflows to Ninja Forms.', 'logical-address-autocomplete-for-formidable-forms' ),
 			],
 			[
 				'name'        => 'WPForms Geolocation',
 				'url'         => 'https://wpgeoforms.com/',
-				'description' => __( 'Add address autocomplete, maps, coordinates and directions to WPForms.', 'address-autocomplete-for-formidable-forms' ),
+				'description' => __( 'Add address autocomplete, maps, coordinates and directions to WPForms.', 'logical-address-autocomplete-for-formidable-forms' ),
 			],
 			[
 				'name'        => 'WP Job Manager Geolocation',
 				'url'         => 'https://jobmanagergeolocation.com/',
-				'description' => __( 'Add proximity searches and interactive maps to your WP Job Manager job board.', 'address-autocomplete-for-formidable-forms' ),
+				'description' => __( 'Add proximity searches and interactive maps to your WP Job Manager job board.', 'logical-address-autocomplete-for-formidable-forms' ),
 			],
 		];
 	}
