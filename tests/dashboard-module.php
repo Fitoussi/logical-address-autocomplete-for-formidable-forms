@@ -22,6 +22,11 @@ if ( false === strpos( $loader, 'FRMGEOAC_URL . \'src/Admin/Dashboard/assets/css
 	throw new RuntimeException( 'Existing host boundary was changed.' );
 }
 $view = file_get_contents( $module . 'views/dashboard.php' );
+$navigation_end = strpos( $view, '</nav>' );
+$notice_anchor = strpos( $view, '<hr class="wp-header-end">' );
+if ( false === $navigation_end || false === $notice_anchor || $notice_anchor < $navigation_end || 1 !== substr_count( $view, 'wp-header-end' ) ) {
+	throw new RuntimeException( 'The single admin-notice anchor must follow the main navigation.' );
+}
 if ( ! preg_match( '/<header\b.*?<\/header>/s', $view, $header ) ) {
 	throw new RuntimeException( 'Dashboard header missing.' );
 }

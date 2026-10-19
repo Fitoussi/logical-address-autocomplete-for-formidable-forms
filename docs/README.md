@@ -111,9 +111,9 @@ omitting only the Logical brand prefix so the host remains identifiable in the
 admin page/browser title and setup notice. Only the visual dashboard heading is
 Address Autocomplete, with For Formidable Forms above it. The official public
 name remains in the plugin header and readme; no separate display constant is needed.
-Requested slug and translation domain: logical-address-autocomplete-for-formidable-forms.
+Approved slug and translation domain: logical-address-autocomplete-for-formidable-forms.
 The local folder, main PHP filename, workspace file and ZIP root use this slug.
-WordPress.org must still confirm/reserve it for the existing pending submission.
+WordPress.org approved the existing submission and this identity on October 19, 2026.
 The GitHub source repository is
 https://github.com/Fitoussi/logical-address-autocomplete-for-formidable-forms.
 Its name matches the requested WordPress.org slug. Repository publication and
@@ -125,3 +125,10 @@ The October 17 source rename preserves prior uncommitted work. The initial
 submission version stays 1.0.0; no already-approved Gravity/Ninja slug is changed.
 Historical acceptance notes and original screenshot captures retain their original
 identities. The screenshot-5 overview capture predates the new branding/dashboard.
+
+## Initial 1.0.0 release
+
+The finalized 1.0.0 package includes the reviewed notice-anchor placement below
+the dashboard navigation. The autocomplete runtime and saved data are unchanged
+from the approved resubmission. The dashboard fixture checks this placement.
+See docs/release-1.0.0.md for package verification and publication boundaries.

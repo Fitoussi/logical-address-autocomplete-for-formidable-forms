@@ -29,12 +29,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<a class="button" href="<?php echo esc_url( Dashboard::get_url( 'products' ) ); ?>"><?php esc_html_e( 'Explore Plugins', 'logical-address-autocomplete-for-formidable-forms' ); ?></a>
 		</div>
 	</header>
-	<hr class="wp-header-end">
 	<nav class="frmgeo-product-dashboard__nav" aria-label="<?php esc_attr_e( 'Product overview sections', 'logical-address-autocomplete-for-formidable-forms' ); ?>">
 		<?php foreach ( $tabs as $key => $label ) : ?>
 			<a href="<?php echo esc_url( Dashboard::get_url( $key ) ); ?>" aria-current="<?php echo $section === $key ? 'page' : 'false'; ?>"><?php echo esc_html( $label ); ?></a>
 		<?php endforeach; ?>
 	</nav>
+	<hr class="wp-header-end">
 	<div class="frmgeo-product-dashboard__layout">
 		<main class="frmgeo-product-dashboard__main">
 			<?php if ( 'overview' === $section ) : ?>
